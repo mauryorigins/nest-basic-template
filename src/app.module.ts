@@ -1,10 +1,11 @@
 import { Module } from '@nestjs/common';
+import { ConfigModule } from '@nestjs/config';
 import { ExampleService } from './example/example.service';
 import { ExampleController } from './example/example.controller';
-import { MongooseModule } from '@nestjs/mongoose';
+import { ExampleModule } from './example/example.module';
 
 @Module({
-  imports: [MongooseModule.forRoot('mongodb://localhost/nest')],
+  imports: [ConfigModule.forRoot(), ExampleModule],
   controllers: [ExampleController],
   providers: [ExampleService],
 })
